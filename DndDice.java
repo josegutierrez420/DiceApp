@@ -11,12 +11,6 @@ public class DndDice
             System.out.println("Invalid, please enter a number.");
             console.next();
         }
-        while(console.nextInt() < 20)                                
-        {
-            System.out.println("Value too large, please enter a number below or equal to 20.");
-            console.next();
-
-        }
         int sides = console.nextInt();
         System.out.println("How many times do you want to roll?");
         while(!console.hasNextLine())//add event to rerun process if > 20
@@ -34,7 +28,7 @@ public class DndDice
         for(int i = 0; i < x; i++)
         {
             int result = r.nextInt(y) + 1;
-            System.out.println("Roll #" + i + ", d" + y + ": " + result);
+            System.out.println("Roll #" + (i + 1) + ", d" + y + ": " + result);
         }
     }
 }
