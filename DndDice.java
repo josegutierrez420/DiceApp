@@ -2,31 +2,56 @@ import java.util.*;
 
 public class DndDice
 {
-    public static void main(final String[] args)
+    public static void main(String[] args)
     {
-        final Scanner console = new Scanner(System.in);
-        System.out.println("What sided dice do you want to roll?");
-        final int sides = console.nextInt();
-        if(sides > 20)
-        {
-            System.out.println("Amount is too high, choose a different amount.");
-        }
-        System.out.println("How many times do you want to roll?");
-        final int times = console.nextInt();
-        if(times > 20)
-        {
-            System.out.println("Amount is too high, choose a different amount.");
-        }
-        Method(times, sides);
-        console.close();
+        //declaring and initializing variables
+        Scanner console = new Scanner(System.in);
+        Random r = new Random();
+        int sides = 0, times = 0;
+        //call methods
+        sides = DieSides(console, sides);
+        times = DieRoll(console, times);
+        DieResult(sides, times, r);
     }
-    public static void Method(final int x, final int y)
+    //Asking user what type of die to use
+    public static int DieSides(Scanner a, int x)
     {
-        final Random r = new Random();
-        for(int i = 0; i < x; i++)
+        System.out.println("What sided dice do you want to roll?");
+        while(!a.hasNextInt())
         {
-            final int result = r.nextInt(y) + 1;
-            System.out.println("d" + y + ": " + result);
+            System.out.println("Please type in a numeric value");
+            a.next();
+        }
+        while(a.nextInt() > 20)
+        {
+            System.out.println("Please type a lower numeric value");
+        }
+        x = a.nextInt();
+        return x;
+    }
+    //Asking user how many times they want to roll the die/dice
+    public static int DieRoll(Scanner b, int y)
+    {
+        System.out.println("How many times do you want to roll?");
+        while(!b.hasNextInt())
+        {
+            System.out.println("Please type in a numeric value");
+            b.next();
+        }
+        while(b.nextInt() > 100)
+        {
+            System.out.println("Please type a lower numeric value");
+        }
+        y = b.nextInt();
+        return y;
+    }
+    //Returning roll results
+    public static void DieResult(int w, int z, Random r1)
+    {
+        for(int i = 0; i > z; i++)
+        {
+            int result = r1.nextInt(z) + 1;
+            System.out.println("Roll #" + (i + 1) + ", d" + w + ": " + result);
         }
     }
 }
