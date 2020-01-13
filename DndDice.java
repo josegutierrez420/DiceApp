@@ -20,6 +20,11 @@ public class DndDice
         while(!a.hasNextInt())
         {
             System.out.println("Please type in a numeric value");
+            a.next();
+        }
+        while(a.nextInt() > 20)
+        {
+            System.out.println("Please type a lower numeric value");
         }
         x = a.nextInt();
         return x;
@@ -31,6 +36,11 @@ public class DndDice
         while(!b.hasNextInt())
         {
             System.out.println("Please type in a numeric value");
+            b.next();
+        }
+        while(b.nextInt() > 100)
+        {
+            System.out.println("Please type a lower numeric value");
         }
         y = b.nextInt();
         return y;
